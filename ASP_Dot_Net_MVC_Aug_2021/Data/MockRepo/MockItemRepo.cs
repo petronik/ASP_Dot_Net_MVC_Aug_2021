@@ -36,7 +36,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo
 
         public Item GetItemById(int id)
         {
-            throw new NotImplementedException();
+            return _items.FirstOrDefault(i => i.Id == id);
         }
 
         public bool SaveChanges()
@@ -46,7 +46,12 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo
 
         public void UpdateItem(Item input)
         {
-            throw new NotImplementedException();
+            var itemToUpdate = _items.FirstOrDefault(i => i.Id == input.Id);
+
+            if (itemToUpdate != null)
+            {
+                itemToUpdate = input;
+            }
         }
     }
 }

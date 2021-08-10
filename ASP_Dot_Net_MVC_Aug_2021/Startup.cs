@@ -1,3 +1,5 @@
+using ASP_Dot_Net_MVC_Aug_2021.Data.Interfaces;
+using ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IItemRepo, MockItemRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
