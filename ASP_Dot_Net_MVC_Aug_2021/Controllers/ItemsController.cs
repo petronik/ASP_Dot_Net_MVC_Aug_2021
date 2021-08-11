@@ -78,7 +78,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         // GET: ItemsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(_repository.GetItemById(id));
         }
 
         // POST: ItemsController/Delete/5
@@ -88,6 +88,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         {
             try
             {
+                _repository.DeleteItem(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

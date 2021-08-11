@@ -46,11 +46,20 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo
 
         public void UpdateItem(Item input)
         {
-            var itemToUpdate = _items.FirstOrDefault(i => i.Id == input.Id);
+            var itemInTheList = _items.FirstOrDefault(i => i.Id == input.Id);
 
-            if (itemToUpdate != null)
+            if (itemInTheList != null)
             {
-                itemToUpdate = input;
+                // itemToUpdate = input; // THE BUG!!!!!!!!!!
+
+                /*
+                _items.Remove(itemInTheList);
+                _items.Add(input);
+                _items.Sort((a, b) => (a.Id).CompareTo(b.Id));
+                */
+
+                itemInTheList.Name = input.Name;
+                itemInTheList.Price = input.Price;
             }
         }
     }
