@@ -43,6 +43,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         {
             try
             {
+                _repository.CreateItem(newItem);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -54,16 +55,18 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         // GET: ItemsController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var itemToEdit = _repository.GetItemById(id);
+            return View(itemToEdit);
         }
 
         // POST: ItemsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Item item)
         {
             try
             {
+                _repository.UpdateItem(item);
                 return RedirectToAction(nameof(Index));
             }
             catch
