@@ -96,5 +96,10 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
                 return View();
             }
         }
+
+        public ActionResult CarouselDemo()
+        {
+            return View();
+        }
     }
 }
