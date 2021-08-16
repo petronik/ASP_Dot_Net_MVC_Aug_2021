@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ASP_Dot_Net_MVC_Aug_2021.Data.Interfaces;
 using ASP_Dot_Net_MVC_Aug_2021.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
 {
@@ -49,6 +50,22 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
             }
 
             return res;
+        }
+
+        public ActionResult Create()
+        {
+            ViewBag.Vendors = 
+                new SelectList(_vendorRepo.GetAllVendors().ToList(),
+                "V_code", "V_name");
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Product product)
+        {
+            _productRepo.CreateProduct(product);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

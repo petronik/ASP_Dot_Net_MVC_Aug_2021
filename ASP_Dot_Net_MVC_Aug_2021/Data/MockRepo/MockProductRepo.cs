@@ -27,6 +27,12 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo
             new Product { P_Code = "SM-23116", P_descript = "2.5-in. wd screw, 50",             P_InDate = new DateTime(2018-02-24), P_QOH = 237, P_Min = 100       , P_Price = 8.45    , P_Discount = 0    , V_code = 21231 },
             new Product { P_Code = "WR3/TT3",  P_descript = "Steel matting, 4x8x1/6, .5 mesh",  P_InDate = new DateTime(2018-01-17), P_QOH = 18 , P_Min = 5         , P_Price = 119.95  , P_Discount = 0.1  , V_code = 25595 },
         };
+
+        public void CreateProduct(Product input)
+        {
+            _products.Add(input);
+        }
+
         public IEnumerable<Product> GetAllProducts()
         {
             return _products;

@@ -23,6 +23,13 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo
             new Vendor { V_code = 25595, V_name = "Rubicon Systems",V_contact = "Orton",        V_AreaCode = 904, V_phone = "456-0092", V_state = "FL", V_order = "Y" },
         };
 
+        public void CreateVendor(Vendor input)
+        {
+            int code = _vendors.Max(v => v.V_code) + 1;
+            input.V_code = code;
+            _vendors.Add(input);
+        }
+
         public IEnumerable<Vendor> GetAllVendors()
         {
             return _vendors;
