@@ -54,8 +54,13 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
 
         public ActionResult Create()
         {
+            var list = _vendorRepo.GetAllVendors().ToList();
+
+            list.Add(new Vendor() { V_code = -1, V_name = " - Select Vendor" });
+            list.Sort((foo1, foo2) => foo1.V_code.CompareTo(foo2.V_code));
+            //list.Reverse();
             ViewBag.Vendors = 
-                new SelectList(_vendorRepo.GetAllVendors().ToList(),
+                new SelectList(list,
                 "V_code", "V_name");
 
             return View();
