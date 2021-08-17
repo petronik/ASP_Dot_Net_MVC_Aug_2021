@@ -1,8 +1,10 @@
 using ASP_Dot_Net_MVC_Aug_2021.Data.Interfaces;
 using ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo;
+using ASP_Dot_Net_MVC_Aug_2021.Data.SqlRepo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +28,11 @@ namespace ASP_Dot_Net_MVC_Aug_2021
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<AppDbContext>(options => {
+                var connectionString = Configuration.GetConnectionString("Default");
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            });
 
             services.AddScoped<IItemRepo, MockItemRepo>();
             services.AddScoped<IVendorRepo, MockVendorRepo>();
