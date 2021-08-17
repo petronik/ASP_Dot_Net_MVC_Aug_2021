@@ -3,14 +3,16 @@ using System;
 using ASP_Dot_Net_MVC_Aug_2021.Data.SqlRepo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210817160350_AddDateTypeForP_InDate")]
+    partial class AddDateTypeForP_InDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +56,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "11GER/G1",
                             P_Discount = 0.0,
-                            P_InDate = new DateTime(2017, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(2003),
                             P_Min = 5,
                             P_Price = 109.98999999999999,
                             P_QOH = 8,
@@ -65,7 +67,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "13-Q2/P2",
                             P_Discount = 0.050000000000000003,
-                            P_InDate = new DateTime(2017, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1992),
                             P_Min = 15,
                             P_Price = 14.99,
                             P_QOH = 32,
@@ -76,7 +78,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "14-Q1/L3",
                             P_Discount = 0.0,
-                            P_InDate = new DateTime(2017, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1993),
                             P_Min = 12,
                             P_Price = 17.489999999999998,
                             P_QOH = 18,
@@ -87,7 +89,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "1548-QQ2",
                             P_Discount = 0.0,
-                            P_InDate = new DateTime(2018, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(2002),
                             P_Min = 8,
                             P_Price = 39.950000000000003,
                             P_QOH = 15,
@@ -98,7 +100,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "1558-QW1",
                             P_Discount = 0.0,
-                            P_InDate = new DateTime(2018, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(2002),
                             P_Min = 5,
                             P_Price = 43.990000000000002,
                             P_QOH = 23,
@@ -109,7 +111,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "2232/QTY",
                             P_Discount = 0.050000000000000003,
-                            P_InDate = new DateTime(2017, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1975),
                             P_Min = 5,
                             P_Price = 109.92,
                             P_QOH = 8,
@@ -120,7 +122,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "2232/QWE",
                             P_Discount = 0.050000000000000003,
-                            P_InDate = new DateTime(2017, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1981),
                             P_Min = 5,
                             P_Price = 99.870000000000005,
                             P_QOH = 6,
@@ -131,7 +133,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "2238/QPD",
                             P_Discount = 0.050000000000000003,
-                            P_InDate = new DateTime(2018, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1997),
                             P_Min = 5,
                             P_Price = 38.950000000000003,
                             P_QOH = 12,
@@ -142,7 +144,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "23109-HB",
                             P_Discount = 0.10000000000000001,
-                            P_InDate = new DateTime(2018, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1997),
                             P_Min = 10,
                             P_Price = 9.9499999999999993,
                             P_QOH = 23,
@@ -153,7 +155,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "23114-AA",
                             P_Discount = 0.050000000000000003,
-                            P_InDate = new DateTime(2018, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(2015),
                             P_Min = 5,
                             P_Price = 14.4,
                             P_QOH = 8,
@@ -163,7 +165,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "54778-2T",
                             P_Discount = 0.0,
-                            P_InDate = new DateTime(2017, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1990),
                             P_Min = 20,
                             P_Price = 4.9900000000000002,
                             P_QOH = 43,
@@ -174,7 +176,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "89-WRE-Q",
                             P_Discount = 0.050000000000000003,
-                            P_InDate = new DateTime(2018, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(2009),
                             P_Min = 5,
                             P_Price = 256.99000000000001,
                             P_QOH = 11,
@@ -185,7 +187,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "PVC23DRT",
                             P_Discount = 0.0,
-                            P_InDate = new DateTime(2018, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1996),
                             P_Min = 75,
                             P_Price = 5.8700000000000001,
                             P_QOH = 188,
@@ -195,7 +197,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "SM-18277",
                             P_Discount = 0.0,
-                            P_InDate = new DateTime(2018, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(2014),
                             P_Min = 75,
                             P_Price = 6.9900000000000002,
                             P_QOH = 172,
@@ -206,7 +208,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "SM-23116",
                             P_Discount = 0.0,
-                            P_InDate = new DateTime(2018, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(1992),
                             P_Min = 100,
                             P_Price = 8.4499999999999993,
                             P_QOH = 237,
@@ -217,7 +219,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Migrations
                         {
                             P_Code = "WR3/TT3",
                             P_Discount = 0.10000000000000001,
-                            P_InDate = new DateTime(2018, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            P_InDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(2000),
                             P_Min = 5,
                             P_Price = 119.95,
                             P_QOH = 18,

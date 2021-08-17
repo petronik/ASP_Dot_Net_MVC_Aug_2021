@@ -18,6 +18,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Models
         public string P_descript { get; set; }
 
         [DisplayName("Date")]
+        [Column(TypeName = "Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime P_InDate { get; set; }
 
         [DisplayName("QOH")]

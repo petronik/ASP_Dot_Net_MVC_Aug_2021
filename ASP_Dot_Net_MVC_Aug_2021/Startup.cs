@@ -35,7 +35,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021
             });
 
             services.AddScoped<IItemRepo, MockItemRepo>();
-            services.AddScoped<IVendorRepo, MockVendorRepo>();
+            //services.AddScoped<IVendorRepo, MockVendorRepo>();
+            services.AddScoped<IVendorRepo, SqlVendorRepo>();
             services.AddScoped<IProductRepo, MockProductRepo>();
         }
 

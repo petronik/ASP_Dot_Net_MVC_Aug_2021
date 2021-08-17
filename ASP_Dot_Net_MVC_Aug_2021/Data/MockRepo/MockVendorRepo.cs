@@ -34,5 +34,31 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo
         {
             return _vendors;
         }
+
+        public Vendor GetVendorById(int id)
+        {
+            return _vendors.FirstOrDefault(v => v.V_code == id);
+        }
+
+        public bool SaveChanges()
+        {
+            return true;
+        }
+
+        public void UpdateVendor(Vendor input)
+        {
+            var itemInTheList = _vendors
+                .FirstOrDefault(i => i.V_code == input.V_code);
+
+            if (itemInTheList != null)
+            {
+                itemInTheList.V_AreaCode = input.V_AreaCode;
+                itemInTheList.V_contact = input.V_contact;
+                itemInTheList.V_name = input.V_name;
+                itemInTheList.V_order = input.V_order;
+                itemInTheList.V_phone = input.V_phone;
+                itemInTheList.V_state = input.V_state;
+            }
+        }
     }
 }

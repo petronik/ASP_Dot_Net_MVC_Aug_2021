@@ -41,7 +41,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void UpdateItem(Item input)

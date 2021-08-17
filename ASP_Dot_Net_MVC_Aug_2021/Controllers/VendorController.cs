@@ -30,6 +30,21 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         public ActionResult Create(Vendor input)
         {
             _vendorRepo.CreateVendor(input);
+            _vendorRepo.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var v = _vendorRepo.GetVendorById(id);
+            return View(v);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Vendor vendor)
+        {
+            _vendorRepo.UpdateVendor(vendor);
+
             return RedirectToAction(nameof(Index));
         }
     }
