@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,9 +10,11 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Models
     public class Vendor
     {
         [DisplayName("Id")]
+        [Key]
         public int V_code { get; set; }
 
         [DisplayName("Name")]
+        [Required]
         public string V_name { get; set; }
 
         [DisplayName("Contact")]
