@@ -10,5 +10,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.Interfaces
     {
         IEnumerable<Product> GetAllProducts();
         void CreateProduct(Product input);
+        Product GetProductById(string id);
+        void UpdateProduct(Product input);
+        bool SaveChanges();
     }
 }
