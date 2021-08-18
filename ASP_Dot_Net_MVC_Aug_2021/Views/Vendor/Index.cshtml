@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Vendor>
+﻿@model IEnumerable<ASP_Dot_Net_MVC_Aug_2021.ModelsDto.VendorDto>
 
 <h1>Vendors</h1>
 
@@ -26,9 +26,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.V_state)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.V_order)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -59,9 +59,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.V_state)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.V_order)
-                </td>
+                </td>*@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id=item.V_code }) |
                     @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

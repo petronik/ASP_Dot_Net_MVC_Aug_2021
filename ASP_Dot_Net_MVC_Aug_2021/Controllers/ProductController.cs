@@ -85,5 +85,14 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
 
             return View(prod);
         }
+
+        [HttpPost]
+        [Route("Product/Edit")]
+        public ActionResult Edit(Product input)
+        {
+            _productRepo.UpdateProduct(input);
+            _productRepo.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -5,12 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using ASP_Dot_Net_MVC_Aug_2021.Data.Interfaces;
 using ASP_Dot_Net_MVC_Aug_2021.Models;
+using ASP_Dot_Net_MVC_Aug_2021.Data;
 
 namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
 {
     public class VendorController : Controller
     {
         private readonly IVendorRepo _vendorRepo;
+        private readonly Mapper _mapper = new Mapper();
 
         public VendorController(IVendorRepo vendorRepo)
         {
@@ -18,7 +20,10 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         }
         public IActionResult Index()
         {
-            return View(_vendorRepo.GetAllVendors());
+            var list = _vendorRepo.GetAllVendors()
+                .Select(v => _mapper.Map(v))
+                .ToList();
+            return View(list);
         }
 
         public ActionResult Create()
