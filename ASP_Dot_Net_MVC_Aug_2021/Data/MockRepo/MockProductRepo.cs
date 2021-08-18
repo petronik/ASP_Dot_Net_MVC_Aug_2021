@@ -40,7 +40,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo
 
         public Product GetProductById(string id)
         {
-            return _products.FirstOrDefault(p => p.P_Code.Equals(id));
+            var code = Uri.UnescapeDataString(id);
+            return _products.FirstOrDefault(p => p.P_Code.Equals(code));
         }
 
         public bool SaveChanges()
