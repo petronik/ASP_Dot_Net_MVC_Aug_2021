@@ -70,7 +70,20 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         public ActionResult Create(Product product)
         {
             _productRepo.CreateProduct(product);
+            _productRepo.SaveChanges();
             return RedirectToAction(nameof(Index));
+        }
+
+        public ActionResult Edit(string id)
+        {
+            var list = _vendorRepo.GetAllVendors().ToList();
+            ViewBag.Vendors =
+                new SelectList(list,
+                "V_code", "V_name");
+
+            var prod = _productRepo.GetProductById(id);
+
+            return View(prod);
         }
     }
 }

@@ -37,5 +37,32 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.MockRepo
         {
             return _products;
         }
+
+        public Product GetProductById(string id)
+        {
+            return _products.FirstOrDefault(p => p.P_Code.Equals(id));
+        }
+
+        public bool SaveChanges()
+        {
+            return true;
+        }
+
+        public void UpdateProduct(Product input)
+        {
+            var itemInList = _products
+                .FirstOrDefault(p => p.P_Code == input.P_Code);
+
+            if (itemInList != null)
+            {
+                itemInList.P_descript = input.P_descript;
+                itemInList.P_Discount = input.P_Discount;
+                itemInList.P_InDate = input.P_InDate;
+                itemInList.P_Min = input.P_Min;
+                itemInList.P_Price = input.P_Price;
+                itemInList.P_QOH = input.P_QOH;
+                itemInList.V_code = input.V_code;
+            }
+        }
     }
 }

@@ -43,8 +43,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         [HttpPost]
         public ActionResult Edit(Vendor vendor)
         {
-            _vendorRepo.UpdateVendor(vendor);
-
+            _vendorRepo.UpdateVendor(vendor); 
+            _vendorRepo.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
     }
