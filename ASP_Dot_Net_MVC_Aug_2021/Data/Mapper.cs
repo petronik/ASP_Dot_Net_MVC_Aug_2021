@@ -55,7 +55,26 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data
                 P_descript = input.P_descript,
                 P_InDate = input.P_InDate,
                 P_Price = input.P_Price,
-                V_code = input.V_code
+                V_code = input.V_code,
+                Vendor = Map(input.Vendor)
+            };
+        }
+
+        public Order Map(OrderDto input)
+        {
+            return new Order { 
+                Id = input.Id,
+                Name = input.Name,
+                Date = input.Date
+            };
+        }
+
+        public OrderDto Map(Order input)
+        {
+            return new OrderDto {
+                Id = input.Id,
+                Name = input.Name,
+                Date = input.Date
             };
         }
     }

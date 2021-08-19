@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using ASP_Dot_Net_MVC_Aug_2021.Data.Interfaces;
 using ASP_Dot_Net_MVC_Aug_2021.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using ASP_Dot_Net_MVC_Aug_2021.Data;
+using ASP_Dot_Net_MVC_Aug_2021.ModelsDto;
 
 namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
 {
@@ -13,6 +15,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
     {
         private readonly IProductRepo _productRepo;
         private readonly IVendorRepo _vendorRepo;
+        private readonly Mapper _mapper = new Mapper();
 
         public ProductController(IProductRepo prodRepo, 
             IVendorRepo vendorRepo)
@@ -28,10 +31,11 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
                     p.Vendor = vendors
                                 .Where(v => v.V_code == p.V_code)
                                 .FirstOrDefault() ?? new Vendor { 
-                                    V_name = "n/a"
+                                    V_name = "no vendor"
                                 };
                     return p;
                 })
+                .Select(p => _mapper.Map(p))
                 .ToList();
             
             
@@ -54,9 +58,11 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
 
         public ActionResult Create()
         {
-            var list = _vendorRepo.GetAllVendors().ToList();
+            var list = _vendorRepo.GetAllVendors()
+                .Select(v => _mapper.Map(v))
+                .ToList();
 
-            list.Add(new Vendor() { V_code = -1, V_name = " - Select Vendor" });
+            list.Add(new VendorDto() { V_code = -1, V_name = " - Select Vendor" });
             list.Sort((foo1, foo2) => foo1.V_code.CompareTo(foo2.V_code));
             //list.Reverse();
             ViewBag.Vendors = 
@@ -67,30 +73,32 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(ProductDto product)
         {
-            _productRepo.CreateProduct(product);
+            _productRepo.CreateProduct(_mapper.Map(product));
             _productRepo.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
         public ActionResult Edit(string id)
         {
-            var list = _vendorRepo.GetAllVendors().ToList();
+            var list = _vendorRepo.GetAllVendors()
+                .Select(v => _mapper.Map(v))
+                .ToList();
             ViewBag.Vendors =
                 new SelectList(list,
                 "V_code", "V_name");
 
-            var prod = _productRepo.GetProductById(id);
+            var prod = _mapper.Map( _productRepo.GetProductById(id) );
 
             return View(prod);
         }
 
         [HttpPost]
         [Route("Product/Edit")]
-        public ActionResult Edit(Product input)
+        public ActionResult Edit(ProductDto input)
         {
-            _productRepo.UpdateProduct(input);
+            _productRepo.UpdateProduct( _mapper.Map( input ) );
             _productRepo.SaveChanges();
             return RedirectToAction(nameof(Index));
         }

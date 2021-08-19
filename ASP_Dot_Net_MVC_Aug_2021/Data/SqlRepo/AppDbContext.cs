@@ -14,6 +14,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.SqlRepo
 
         public DbSet<Vendor> Vendors { set; get; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderProducts> OrderProducts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,6 +52,11 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.SqlRepo
             new Product { P_Code = "SM-18277", P_descript = "1.25-in. metal screw, 25", P_InDate = new DateTime(2018, 03, 01), P_QOH = 172, P_Min = 75, P_Price = 6.99, P_Discount = 0, V_code = 21225 },
             new Product { P_Code = "SM-23116", P_descript = "2.5-in. wd screw, 50", P_InDate = new DateTime(2018, 02, 24), P_QOH = 237, P_Min = 100, P_Price = 8.45, P_Discount = 0, V_code = 21231 },
             new Product { P_Code = "WR3/TT3", P_descript = "Steel matting, 4x8x1/6, .5 mesh", P_InDate = new DateTime(2018, 01, 17), P_QOH = 18, P_Min = 5, P_Price = 119.95, P_Discount = 0.1, V_code = 25595 }
+                );
+
+            modelBuilder.Entity<Order>().HasData(
+                new Order { Id = 1, Name = "Mark's order", Date = new DateTime(2021, 7, 20)},
+                new Order { Id = 2, Name = "Lucy's order", Date = new DateTime(2020, 8, 15)}
                 );
         }
     }

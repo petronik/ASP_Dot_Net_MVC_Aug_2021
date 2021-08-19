@@ -38,6 +38,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021
             //services.AddScoped<IVendorRepo, MockVendorRepo>();
             services.AddScoped<IVendorRepo, SqlVendorRepo>();
             services.AddScoped<IProductRepo, MockProductRepo>();
+            services.AddScoped<IOrderRepo, SqlOrderRepo>();
+            services.AddScoped<IOrderProductsRepo, SqlOrderProductsRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

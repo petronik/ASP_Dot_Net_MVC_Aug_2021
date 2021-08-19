@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ASP_Dot_Net_MVC_Aug_2021.Data.Interfaces;
 using ASP_Dot_Net_MVC_Aug_2021.Models;
 using ASP_Dot_Net_MVC_Aug_2021.Data;
+using ASP_Dot_Net_MVC_Aug_2021.ModelsDto;
 
 namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
 {
@@ -32,23 +33,23 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Vendor input)
+        public ActionResult Create(VendorDto input)
         {
-            _vendorRepo.CreateVendor(input);
+            _vendorRepo.CreateVendor(_mapper.Map(input));
             _vendorRepo.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
         public ActionResult Edit(int id)
         {
-            var v = _vendorRepo.GetVendorById(id);
+            var v =  _mapper.Map(_vendorRepo.GetVendorById(id));
             return View(v);
         }
 
         [HttpPost]
-        public ActionResult Edit(Vendor vendor)
+        public ActionResult Edit(VendorDto vendor)
         {
-            _vendorRepo.UpdateVendor(vendor); 
+            _vendorRepo.UpdateVendor(_mapper.Map(vendor)); 
             _vendorRepo.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
