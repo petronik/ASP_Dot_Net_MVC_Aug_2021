@@ -15,5 +15,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.Interfaces
         void DeleteOrderProducts(int id);
 
         bool SaveChanges();
+        void RemoveRange(int orderId);
+        void AddRange(IEnumerable<OrderProducts> range);
     }
 }

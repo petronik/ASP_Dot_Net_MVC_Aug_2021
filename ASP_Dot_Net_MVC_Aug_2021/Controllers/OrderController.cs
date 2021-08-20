@@ -1,5 +1,6 @@
 ﻿using ASP_Dot_Net_MVC_Aug_2021.Data;
 using ASP_Dot_Net_MVC_Aug_2021.Data.Interfaces;
+using ASP_Dot_Net_MVC_Aug_2021.Models;
 using ASP_Dot_Net_MVC_Aug_2021.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -126,6 +127,24 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
             };
 
             return PartialView(pvm);
+        }
+
+        public ActionResult SaveProducts(SaveProductsInOrderVM obj)
+        {
+            _orderProductsRepo.RemoveRange(obj.OrderId);
+
+            var rangeToAdd = obj.Products
+                .Where(p => p.IsActive)
+                .Select(op => new OrderProducts
+                {
+                    OrderId = obj.OrderId,
+                    ProductId = op.Id
+                });
+
+            _orderProductsRepo.AddRange(rangeToAdd);
+            _orderProductsRepo.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

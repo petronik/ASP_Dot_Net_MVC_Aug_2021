@@ -16,6 +16,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.SqlRepo
             _context = context;
         }
 
+
+
         public void CreateOrderProducts(OrderProducts input)
         {
             throw new NotImplementedException();
@@ -36,6 +38,8 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.SqlRepo
             throw new NotImplementedException();
         }
 
+
+
         public bool SaveChanges()
         {
             return _context.SaveChanges() >= 0;
@@ -44,6 +48,21 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Data.SqlRepo
         public void UpdateOrderProducts(OrderProducts input)
         {
             throw new NotImplementedException();
+        }
+
+
+
+
+        public void AddRange(IEnumerable<OrderProducts> range)
+        {
+            _context.AddRange(range);
+        }
+
+        public void RemoveRange(int orderId)
+        {
+            var rangeToRemove = _context.OrderProducts
+                .Where(op => op.OrderId == orderId);
+            _context.RemoveRange(rangeToRemove);
         }
     }
 }
