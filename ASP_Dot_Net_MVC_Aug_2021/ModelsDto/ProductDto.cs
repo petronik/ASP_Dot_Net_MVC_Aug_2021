@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +14,7 @@ namespace ASP_Dot_Net_MVC_Aug_2021.ModelsDto
         public string P_Code { get; set; }
 
         [DisplayName("Description")]
+        [Required(ErrorMessage = "Hello Display Name ")]
         public string P_descript { get; set; }
 
         [DisplayName("Date")]
@@ -26,6 +28,9 @@ namespace ASP_Dot_Net_MVC_Aug_2021.ModelsDto
         //public int P_Min { get; set; }
 
         [DisplayName("Price")]
+        [Required]
+        [Range(0.01, double.MaxValue, 
+            ErrorMessage = "Price value must be greater than 0")]
         public double P_Price { get; set; }
 
         //[DisplayName("Discount")]
@@ -34,5 +39,15 @@ namespace ASP_Dot_Net_MVC_Aug_2021.ModelsDto
         [DisplayName("Vendor")]
         public int? V_code { get; set; }
         public VendorDto Vendor { get; set; }
+
+        /*
+        [ValidateNever]
+        [CreditCard]
+        [EmailAddress]
+        [Compare]
+        [Phone]
+        [Range]
+        [StringLength(255)]
+        */
     }
 }
