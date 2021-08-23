@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿@model IEnumerable<ASP_Dot_Net_MVC_Aug_2021.ModelsDto.ProductDto>
 
 
 
@@ -19,18 +19,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.P_InDate)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.P_QOH)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.P_Min)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.P_Price)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.P_Discount)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.V_code)
             </th>
@@ -50,18 +50,18 @@
                 @Html.DisplayFor(modelItem => item.P_InDate)
                 @*@item.P_InDate.ToShortDateString()*@
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.P_QOH)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.P_Min)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.P_Price)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.P_Discount)
-            </td>
+            </td>*@
             <td>
                 @*@Html.DisplayFor(modelItem => item.V_code)*@
                 @item.Vendor.V_name

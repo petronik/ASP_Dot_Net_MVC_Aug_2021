@@ -1,0 +1,29 @@
+﻿@model ASP_Dot_Net_MVC_Aug_2021.ViewModel.SaveProductsInOrderVM
+
+@using (Html.BeginForm("SaveProducts", "Order"))
+{
+<table class="table">
+    @if (Model != null)
+    {
+        for (var i = 0; i < Model.Products.Count(); ++i)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(x => Model.Products[i].IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => Model.Products[i].Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => Model.Products[i].Price)
+                </td>
+            </tr>
+
+            @Html.HiddenFor(mi => Model.Products[i].Id)
+        }
+
+        @Html.HiddenFor(mi => Model.OrderId)
+    }
+</table>
+<button type="submit" class="btn btn-primary">Save changes</button>
+}
