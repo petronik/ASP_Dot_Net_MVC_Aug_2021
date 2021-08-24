@@ -75,9 +75,13 @@ namespace ASP_Dot_Net_MVC_Aug_2021.Controllers
         [HttpPost]
         public ActionResult Create(ProductDto product)
         {
-            _productRepo.CreateProduct(_mapper.Map(product));
-            _productRepo.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                _productRepo.CreateProduct(_mapper.Map(product));
+                _productRepo.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(product);
         }
 
         public ActionResult Edit(string id)
